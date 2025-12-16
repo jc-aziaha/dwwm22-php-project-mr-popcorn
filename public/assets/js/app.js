@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // alors, récupérons la longueur de la valeur du textarea.
         const length = textarea.value.length;
 
-        // Préparons le text dynamique du compteur
+        // Préparons le texte dynamique du compteur, pour remplacer le texte statique
         counter.textContent = `${length} / ${maxLength} caractères`;
 
-        // Si la longueur de la valeur du textarea est supérieur à la lobgueur totale prévue,
+        // Si la longueur de la valeur du textarea est strictement supérieur à la longueur totale prévue,
         if (length > maxLength) {
 
-            // Alorsn, rajoutons ces classes
+            // Alors, rajoutons ces classes ci-dessous
             textarea.classList.add('is-invalid');
             counter.classList.add('text-danger');
         } else {
