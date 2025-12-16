@@ -1,5 +1,7 @@
 <?php
 
-    $password = "bébé";
+    $firstName = " Emilie ";
 
-    echo mb_strlen($password);
+    // $password = "bébé";
+
+    // echo mb_strlen($password);
