@@ -59,7 +59,7 @@ session_start();
         if ( !isset($_POST['honey_pot']) || !empty($_POST['honey_pot']) ) {
             // Effectuer une redirection vers la page de laquelle proviennent les informations
             // Puis arrêter l'exécution du script.
-            header('Location: edit.php');
+            header("Location: edit.php?film_id={$film['id']}");
             die();
         }
         unset($_POST['honey_pot']);
@@ -110,7 +110,7 @@ session_start();
 
             // 4c. Effectuer une redirection vers la page de laquelle proviennent les informations
             // Puis arrêter l'exécution du script.
-            header('Location: edit.php');
+            header("Location: edit.php?film_id={$film['id']}");
             die();
         }
 
@@ -124,7 +124,7 @@ session_start();
 
         // 12. Etablir une connexion avec la base de données
         // 13. Effectuer la requête d'insertion du nouveau film dans la table prévue (film)
-        updateFilm($ratingRounded, $_POST);
+        updateFilm($ratingRounded, $film['id'], $_POST);
 
         // 14. Générer le message flash de succès
         $_SESSION['success'] = "Le film a été modifié avec succès.";
