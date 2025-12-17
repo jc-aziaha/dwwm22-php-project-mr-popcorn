@@ -2,6 +2,7 @@
 session_start();
 
     require_once __DIR__ . "/../functions/db.php";
+    require_once __DIR__ . "/../functions/helpers.php";
 
     // 1. Etablir une connexion avec la base de données
     // 2. Effectuer la requête de sélection de tous les films de la base de données
@@ -27,8 +28,6 @@ session_start();
                 </a>
             </div>
 
-           
-
             <?php if(count($films) > 0) : ?>
                 <div class="container">
                     <div class="row">
@@ -46,12 +45,12 @@ session_start();
                             <?php foreach($films as $film) : ?>
                                 <article class="film-card bg-white p-4 rounded shadow mb-4">
                                     <h2>Titre: <?= htmlspecialchars($film['title']); ?></h2>
-                                    <p>Note: <?= isset($film['rating']) && $film['rating'] !== "" ? htmlspecialchars((float) $film['rating']) : 'Non renseignée'; ?></p>
+                                    <p>Note: <?= isset($film['rating']) && $film['rating'] !== "" ? displayStars((float) htmlspecialchars($film['rating'])) : 'Non renseignée'; ?></p>
                                     <hr>
                                     <div class="d-flex justify-content-start align-items-center gap-2">
-                                        <a href="" class="btn btn-sm btn-dark">Voir détails</a>
-                                        <a href="" class="btn btn-sm btn-secondary">Modifier</a>
-                                        <a href="" class="btn btn-sm btn-danger">Supprimer</a>
+                                        <a href="show.php?film_id=<?= htmlspecialchars($film['id']); ?>" class="btn btn-sm btn-dark">Voir détails</a>
+                                        <a href="edit.php?film_id=<?= htmlspecialchars($film['id']); ?>" class="btn btn-sm btn-secondary">Modifier</a>
+                                        <a href="delete.php" class="btn btn-sm btn-danger">Supprimer</a>
                                     </div>
                                 </article>
                             <?php endforeach ?>
