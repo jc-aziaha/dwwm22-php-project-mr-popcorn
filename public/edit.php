@@ -28,6 +28,9 @@ session_start();
         die();
     }
 
+    // 5. Dans le cas contraire, 
+    // nous pouvons afficher les informations du film dans le formulaire de modification
+
     /*
      * ----------------------------------------------------------------
      * Traitement des données provenant du formulaire 
@@ -47,7 +50,7 @@ session_start();
         ) {
             // Effectuer une redirection vers la page de laquelle proviennent les informations
             // Puis arrêter l'exécution du script.
-            header('Location: edit.php');
+            header("Location: edit.php?film_id={$film['id']}");
             die();
         }
         unset($_SESSION['csrf_token']);
@@ -140,8 +143,6 @@ session_start();
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 
-    // 5. Dans le cas contraire, 
-    // nous pouvons afficher les informations du film dans le formulaire de modification
 ?>
 <?php
     $title = "Modifier le film: {$film['title']}";
@@ -156,7 +157,7 @@ session_start();
         <main class="container">
             <h1 class="text-center my-3 display-5">Modifier ce film</h1>
 
-            <!-- Formulaire d'ajout d'un nouveau film -->
+            <!-- Formulaire de modificatiuon d'un film -->
             <div class="container mt-3">
                 <div class="row">
                     <div class="col-md-8 col-lg-4 mx-auto p-4 bg-white shadow rounded">
